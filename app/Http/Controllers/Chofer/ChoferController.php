@@ -19,6 +19,7 @@ class ChoferController extends Controller{
     }
 
     public function chofer(){
+        
         $autobus = AutobusModel::select('idAutobus')
         ->where('activo','1')
         ->get();
@@ -49,9 +50,18 @@ class ChoferController extends Controller{
                 'numerotelefonico' => $numerotelefonico,
                 'idAutobus' => $idAutobus
             ]);
+
+            $autobus = AutobusModel::select('idAutobus','activo')
+            ->where ('idAutobus',$idAutobus)
+            ->update([
+            'activo' => '0',
+            ]);
                 //nombre como aparece en la base de datos  => nombre de la variable que se creo
             return redirect()->to('mostrarChofer');
        }
+
+       
+  
 
        public function mostrarChofer(){
       $ver1 = ChoferModel::select('licencia','nombre','apellido1','apellido2','calle','colonia','dir_numero','numerotelefonico','idAutobus')
@@ -94,9 +104,8 @@ class ChoferController extends Controller{
         return redirect()->to('mostrarChofer');
     }
 
-    
     public function bajaChofer($id){
-        $verU = AutobusModel::select('licencia','activo')
+        $verU = ChoferModel::select('licencia','activo')
         ->where ('licencia',$id)
         ->update([
             'activo' => '0',

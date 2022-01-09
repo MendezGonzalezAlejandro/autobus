@@ -25,11 +25,14 @@
                 <br>
                 <br>
                 Número Telefónico: <input type: "text" name="numerotelefonico">
-                idAutobus: <input type: "text" name="idAutobus">
+                <!-- idAutobus: <input type: "text" name="idAutobus"> -->
 
                 <br>
                 <br>
-                <select name="idAutobuss" id="inputAutobus" class="form-select" style="height:35px; width:250px">
+
+                <label for="idAutobus" class="form-label">Autobus*</label>
+                
+                <select name="idAutobus" id="inputAutobus" class="form-select" style="height:35px; width:250px">
                         @foreach ($autobus as $x)
                         <option value="{{ $x['idAutobus'] }}" > {{ $x['idAutobus'] }} </option>
                         
