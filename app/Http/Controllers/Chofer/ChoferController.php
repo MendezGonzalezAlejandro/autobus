@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Chofer;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 
 use App\Models\Chofer\ChoferModel;
+
+use App\Models\Autobus\AutobusModel;
+
+//use App\Http\Controllers\Autobus\AutobusController;
 
 class ChoferController extends Controller{
     
@@ -14,7 +19,11 @@ class ChoferController extends Controller{
     }
 
     public function chofer(){
-        return view('admin\chofer/Alta');  //muestra lo visual de autobus 
+        $autobus = AutobusModel::select('idAutobus')
+        ->where('activo','1')
+        ->get();
+        return view('admin.chofer.Alta', compact('autobus'));
+       // return view('admin\chofer/Alta');  //muestra lo visual de autobus 
        }
     
     
