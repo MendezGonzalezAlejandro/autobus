@@ -42,7 +42,9 @@
            
                 <td> 
                         <a class="btn btn-warning" href="../editarChofer/{{ $x->licencia}}"> Editar</a>
-                        <a class="btn btn-danger" href="../bajaChofer/{{ $x->licencia}}"> Eliminar </a>
+                        <a class="btn btn-danger" href="../bajaChofer/{{ $x->licencia}}"> Eliminar </a> 
+
+                        
                 </td>
         @endforeach
             </tr>

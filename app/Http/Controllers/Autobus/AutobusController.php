@@ -41,7 +41,7 @@ class AutobusController extends Controller{
     public function mostrar(){
         //$ver1 = AutobusModel::all();  //Mostrar todos
       $ver1 = AutobusModel::select('idAutobus','modelo','marca','placa','anio')
-      ->where('activo','1')
+      //->where('activo','1')
       ->get();
         //->where('tipo','1')
         // ->first();  //te muestra el primero que encuentra
@@ -76,7 +76,7 @@ class AutobusController extends Controller{
         return redirect()->to('Mostrar');
     }
 
-    
+  /*  
     public function baja($id){
 
        // $id = $p3->idAutobus;
@@ -88,4 +88,15 @@ class AutobusController extends Controller{
         ]);
         return redirect()->to('Mostrar');
     }
+*/
+
+    //Eliminar completamente el archivo
+
+    public function baja($id){
+        $verU = AutobusModel::select('idAutobus')
+        ->where ('idAutobus',$id)
+        ->delete();
+        return redirect()->to('Mostrar');
+    }
+
 }

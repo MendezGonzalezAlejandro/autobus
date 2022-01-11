@@ -46,3 +46,14 @@ Route:: get('editarChofer/{id}','App\Http\Controllers\Chofer\ChoferController@ed
 
 Route:: post('modificarChofer','App\Http\Controllers\Chofer\ChoferController@modificarChofer');
 Route:: get('bajaChofer/{id}','App\Http\Controllers\Chofer\ChoferController@bajaChofer');
+
+
+//Corrida
+Route:: get('Corrida','App\Http\Controllers\Corrida\CorridaController@corrida');
+Route:: post('AltaCorrida','App\Http\Controllers\Corrida\CorridaController@altaCorrida');
+Route:: get('mostrarCorrida','App\Http\Controllers\Corrida\CorridaController@mostrarCorrida');
+Route:: get('eliminarCorrida/{id}','App\Http\Controllers\Corrida\CorridaController@eliminarCorrida');
+
+
+
+

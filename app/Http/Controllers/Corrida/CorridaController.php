@@ -1,75 +1,63 @@
 <?php
 
-namespace App\Http\Controllers\Chofer;
+namespace App\Http\Controllers\Corrida;
 
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 
-use App\Models\Chofer\ChoferModel;
-
+use App\Models\Corrida\CorridaModel;
 use App\Models\Autobus\AutobusModel;
 
-//use App\Http\Controllers\Autobus\AutobusController;
-
-class ChoferController extends Controller{
+class CorridaController extends Controller{
     
     public function __construct(){
         $this->middleware('auth');
     }
 
-    public function chofer(){
+
+
+    public function corrida(){
         
         $autobus = AutobusModel::select('idAutobus')
         ->where('activo','1')
         ->get();
-        return view('admin.chofer.Alta', compact('autobus'));
-       // return view('admin\chofer/Alta');  //muestra lo visual de autobus 
+        return view('admin.corrida.Alta',  compact('autobus'));
        }
     
     
-       public function altaC(Request $p){
-            $licencia = $p->licencia;
-            $nombre = $p->nombre;
-            $apellido1 = $p->apellido1;
-            $apellido2 = $p->apellido2;
-            $calle = $p->calle;
-            $colonia = $p->colonia;
-            $dir_numero = $p->dir_numero;
-            $numerotelefonico = $p->numerotelefonico;
+       public function altaCorrida(Request $p){
+            $origen= $p->origen;
+            $destino = $p->destino;
+            $horaSalida = $p->horaSalida;
             $idAutobus = $p->idAutobus;
     
-            ChoferModel::create([
-                'licencia' => $licencia,
-                'nombre' => $nombre,
-                'apellido1' => $apellido1,
-                'apellido2' => $apellido2,
-                'calle' => $calle,
-                'colonia' => $colonia,
-                'dir_numero' => $dir_numero,
-                'numerotelefonico' => $numerotelefonico,
+            CorridaModel::create([
+                'origen' => $origen,
+                'destino' => $destino,
+                'horaSalida' => $horaSalida,
                 'idAutobus' => $idAutobus
             ]);
-
+/*
             $autobus = AutobusModel::select('idAutobus','activo')
             ->where ('idAutobus',$idAutobus)
             ->update([
             'activo' => '0',
             ]);
+            */
                 //nombre como aparece en la base de datos  => nombre de la variable que se creo
-            return redirect()->to('mostrarChofer');
+            return redirect()->to('mostrarCorrida');
        }
 
        
   
 
-       public function mostrarChofer(){
-      $ver1 = ChoferModel::select('licencia','nombre','apellido1','apellido2','calle','colonia','dir_numero','numerotelefonico','idAutobus')
+       public function mostrarCorrida(){
+      $ver1 = CorridaModel::select('idcorrida','origen','destino','horaSalida','idAutobus')
       //->where('activo','1')
       ->get();
-        return view('admin\chofer/Mostrar')->with('chofer',$ver1);
+        return view('admin.corrida.Mostrar')->with('corrida',$ver1);
     }
-
+/*
     public function editarChofer($id){
         $verU = ChoferModel::select('licencia','nombre','apellido1','apellido2','calle','colonia','dir_numero','numerotelefonico','idAutobus')
         ->where ('licencia',$id)
@@ -103,7 +91,7 @@ class ChoferController extends Controller{
         ]);
         return redirect()->to('mostrarChofer');
     }
-
+*/
     /*
 //Ocultar el archivo en la vista
     public function bajaChofer($id){
@@ -118,12 +106,14 @@ class ChoferController extends Controller{
 //Eliminar completamente el archivo
 
 
-    public function bajaChofer($id){
-        $verU = ChoferModel::select('licencia')
-        ->where ('licencia',$id)
+    public function eliminarCorrida($id){
+        $verU = CorridaModel::select('idcorrida')
+        ->where ('idcorrida',$id)
         ->delete();
-        return redirect()->to('mostrarChofer');
+        return redirect()->to('mostrarCorrida');
     }
 
-  
+
+
 }
+

@@ -11,10 +11,165 @@ h1 {
     
   }
 
-  .card-body{
-      
-      color: black;
+  .welc{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f5f5f5;
+    margin: 2%;
+    padding: auto;
   }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+  }
+
+  .cardWelcome {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+   
+    background-image: url("https://scontent.fmtt1-1.fna.fbcdn.net/v/t1.6435-9/117825211_1426428394221884_515816002190494572_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=730e14&_nc_ohc=looenY42d-MAX-hr4Fk&_nc_ht=scontent.fmtt1-1.fna&oh=00_AT_1iG8BnbBkjz0DfCJQzozrUKtNFrE2WRoGQdwLpu0IBw&oe=620387FE");
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+  }
+  
+  .card-body {
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+  }
+
+  .prueba{
+    margin: 2%;
+  }
+ 
+  .prueba1{
+      margin-left: 2%;
+  }
+
+  .opciones{
+
+    margin-left: 65%;
+    margin-top: -40px;
+    height:35px; 
+    width:100px
+  }
+
+  .textopcion{
+
+    
+    margin-left: 40%;
+    margin-top: -30px;
+
+  }
+
+  .tel{
+    margin-left: 2%;
+    margin-top: 4%;
+    
+  }
+
+  .dir{
+    margin-left: 2%;
+    margin-top: 2%;
+    
+  }
+
+  .acomodar{
+
+    margin-left: 55%;
+    margin-top: -39px;
+
+  }
+
+  .acomodarA{
+
+    margin-left: 47%;
+    margin-top: -39px;
+
+  }
+
+  .acomodarL{
+
+    margin-left: 6%;
+    margin-top: 4%;
+
+  }
+
+  .botonChofer{
+      margin: 2%;
+  }
+
+  .ventaO{
+    margin-left: 14%;
+    margin-top: -3%;
+    height:35px; 
+    width:190px;
+    
+  }
+
+  .TventaO{
+    margin-left: 10%;
+    margin-top: 2%;
+    height:35px; 
+    width:190px;
+    
+  }
+
+  .ventaD{
+    margin-left: 40%;
+    margin-top: -3%;
+    height:35px; 
+    width:190px;
+    margin-bottom: 2%;
+    
+  }
+
+  .TventaD{
+    margin-left: 35%;
+    margin-top: -1.9%;
+    height:35px; 
+    width:190px;
+    
+  }
+
+
+  .TventaF{
+    margin-left: 65%;
+    margin-top: -3.9%;
+    height:35px; 
+    width:190px;
+    
+  }
+
+  .ventaF{
+    margin-left: 69%;
+    margin-top: -2.9%;
+    height:35px; 
+    width:190px;
+    margin-bottom: 2%;
+    
+  }
+
+
+
+ 
+
+
+
   ::placeholder{
     font-family: "Font Awesome 5 Free"; font-weight: 600;
   }
