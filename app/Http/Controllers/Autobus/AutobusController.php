@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Autobus;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\TryCatch;
+use Exception;
+use PDF;
 
 use App\Models\Autobus\AutobusModel;
 
@@ -25,6 +28,7 @@ class AutobusController extends Controller{
         $placa = $p->placa;
         $anio = $p->anio;
 
+        Try{
         AutobusModel::create([
             'modelo' => $modelo,
             'marca' => $marca,
@@ -32,12 +36,16 @@ class AutobusController extends Controller{
             'anio' => $anio
         ]);
             //nombre como aparece en la base de datos  => nombre de la variable que se creo
-        
-
-        return redirect()->to('Mostrar');
+        return redirect()->to('Mostrar')->with('mensaje','Autobus agregado');
         //para que nos regrese 
+
+        }catch(\Illuminate\Database\QueryException $e){
+            return redirect()->to('Alta') ->with('mensaje','Rellene todos los campos');
+        }
    }
   
+
+
     public function mostrar(){
         //$ver1 = AutobusModel::all();  //Mostrar todos
       $ver1 = AutobusModel::select('idAutobus','modelo','marca','placa','anio')
@@ -45,19 +53,19 @@ class AutobusController extends Controller{
       ->get();
         //->where('tipo','1')
         // ->first();  //te muestra el primero que encuentra
-
         return view('admin/Mostrar')->with('autobus',$ver1);
     }
-    
+
     public function editarU($id){
         $verU = AutobusModel::select('idAutobus','modelo','marca','placa','anio')
         ->where ('idAutobus',$id)
         ->first();
 
-        return view('admin/editar')->with('autobus',$verU);
+        return view('admin.editar')->with('autobus',$verU);
     }
 
-    public function actU(Request $p1){
+    
+    public function modificarAutobus(Request $p1){
 
         $idAutobus = $p1->idAutobus;
         $modelo = $p1->modelo;
@@ -65,17 +73,19 @@ class AutobusController extends Controller{
         $placa = $p1->placa;
         $anio = $p1->anio;
 
-        $verU = AutobusModel::select('idAutobus','modelo','marca','placa','anio')
+        $verU = AutobusModel::select('modelo','marca','marca','placa','anio')
         ->where ('idAutobus',$idAutobus)
         ->update([
             'modelo' => $modelo,
             'marca' => $marca,
             'placa' => $placa,
-            'anio' => $anio
+            'anio' => $anio,
         ]);
         return redirect()->to('Mostrar');
     }
 
+    
+   
   /*  
     public function baja($id){
 

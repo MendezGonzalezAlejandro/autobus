@@ -5,6 +5,8 @@
   
         <div class="agregarAutobus">
             <a class="btn btn-primary" href="{{ url('/Alta') }}"> Agregar nuevo autobus </a>
+
+           <!-- <a class="btn btn-primary" href="{{ url('/Autobus/pdf') }}"> Generar reporte </a>  -->
         </div>
 
         <br>

@@ -18,7 +18,8 @@
                 <td>Origen</td>
                 <td>Destino</td>
                 <td>Hora de Salida</td>
-                <td>Autobus asignado</td>
+                <td>Autobús asignado</td>
+                <td>Precio</td>
                 <td>Acción</td>
             </tr>
         </thead>    
@@ -31,6 +32,7 @@
                 <td>{{ $x->destino}}</td>
                 <td>{{ $x->horaSalida}}</td>
                 <td>{{ $x->idAutobus}}</td>
+                <td>{{ $x->precio}}</td>
            
                 <td> 
                         <a class="btn btn-warning" href="../editarChofer/{{ $x->idcorrida}}"> Editar</a>

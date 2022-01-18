@@ -19,7 +19,7 @@ class CorridaController extends Controller{
     public function corrida(){
         
         $autobus = AutobusModel::select('idAutobus')
-        ->where('activo','1')
+        //->where('activo','1')
         ->get();
         return view('admin.corrida.Alta',  compact('autobus'));
        }
@@ -30,12 +30,14 @@ class CorridaController extends Controller{
             $destino = $p->destino;
             $horaSalida = $p->horaSalida;
             $idAutobus = $p->idAutobus;
+            $precio = $p->precio;   
     
             CorridaModel::create([
                 'origen' => $origen,
                 'destino' => $destino,
                 'horaSalida' => $horaSalida,
-                'idAutobus' => $idAutobus
+                'idAutobus' => $idAutobus,
+                'precio' => $precio
             ]);
 /*
             $autobus = AutobusModel::select('idAutobus','activo')
@@ -52,7 +54,7 @@ class CorridaController extends Controller{
   
 
        public function mostrarCorrida(){
-      $ver1 = CorridaModel::select('idcorrida','origen','destino','horaSalida','idAutobus')
+      $ver1 = CorridaModel::select('idcorrida','origen','destino','horaSalida','idAutobus','precio')
       //->where('activo','1')
       ->get();
         return view('admin.corrida.Mostrar')->with('corrida',$ver1);

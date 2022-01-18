@@ -38,7 +38,8 @@ class ChoferController extends Controller{
             $dir_numero = $p->dir_numero;
             $numerotelefonico = $p->numerotelefonico;
             $idAutobus = $p->idAutobus;
-    
+         
+            try{
             ChoferModel::create([
                 'licencia' => $licencia,
                 'nombre' => $nombre,
@@ -57,11 +58,14 @@ class ChoferController extends Controller{
             'activo' => '0',
             ]);
                 //nombre como aparece en la base de datos  => nombre de la variable que se creo
-            return redirect()->to('mostrarChofer');
+            return redirect()->to('mostrarChofer')->with('mensaje','Chofer Agregado');
+            
+            }catch(\Illuminate\Database\QueryException $e){
+            return redirect()->to('Chofer') ->with('mensaje','Rellene todos los campos');
+            }
        }
 
-       
-  
+
 
        public function mostrarChofer(){
       $ver1 = ChoferModel::select('licencia','nombre','apellido1','apellido2','calle','colonia','dir_numero','numerotelefonico','idAutobus')
@@ -74,8 +78,9 @@ class ChoferController extends Controller{
         $verU = ChoferModel::select('licencia','nombre','apellido1','apellido2','calle','colonia','dir_numero','numerotelefonico','idAutobus')
         ->where ('licencia',$id)
         ->first();
-        return view('admin\chofer/editar')->with('chofer',$verU);
+        return view('admin.chofer.editarChofer')->with('chofer',$verU);
     }
+
 
     public function modificarChofer(Request $p1){
 

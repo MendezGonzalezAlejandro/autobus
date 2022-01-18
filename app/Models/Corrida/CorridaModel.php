@@ -12,5 +12,5 @@ class CorridaModel extends Model{
     protected $primarykey = 'idcorrida';
     public $timestamps = false;
 
-    protected $fillable = ['idcorrida','origen', 'destino', 'horaSalida', 'activo','idAutobus'];
+    protected $fillable = ['idcorrida','origen', 'destino', 'horaSalida', 'activo','idAutobus','precio'];
 }
